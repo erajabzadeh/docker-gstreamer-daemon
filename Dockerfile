@@ -47,7 +47,7 @@ RUN git clone --depth 1 --branch v${GST_INTERPIPE_VERSION} https://github.com/Ri
         && make check \
         && make install
 
-ENV GST_DEBUG=2
+ENV GST_DEBUG=${GST_DEBUG:-2}
 
 EXPOSE 5000
 
