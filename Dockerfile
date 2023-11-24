@@ -32,6 +32,7 @@ RUN apt-get update && \
         libtool \
         pkg-config \
         python3-full \
+        python3-pip \
         sudo
 
 RUN python3 -m venv ~/.local/.venv --system-site-packages
