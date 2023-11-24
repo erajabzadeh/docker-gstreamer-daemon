@@ -1,4 +1,4 @@
-FROM debian:12-slim
+FROM debian:12
 
 ARG GSTD_VERSION=0.15.0
 ARG GST_INTERPIPE_VERSION=1.1.8
@@ -31,28 +31,25 @@ RUN apt-get update && \
         libsoup2.4-dev \
         libtool \
         pkg-config \
-        python3-full \
         python3-pip \
         sudo
 
-RUN python3 -m venv ~/.local/.venv --system-site-packages
+RUN rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 
 RUN curl -sSLJ https://github.com/RidgeRun/gstd-1.x/archive/refs/tags/v${GSTD_VERSION}.tar.gz \
         | tar -C /usr/src -xzf - \
         && cd /usr/src/gstd-1.x-${GSTD_VERSION} \
-        && . ~/.local/.venv/bin/activate \
-        && . ./autogen.sh \
-        && . ./configure \
-        && . make \
-        && . make install
+        && ./autogen.sh \
+        && ./configure \
+        && make \
+        && make install
 
 RUN git clone --depth 1 --branch v${GST_INTERPIPE_VERSION} https://github.com/RidgeRun/gst-interpipe.git /usr/src/gst-interpipe \
         && cd /usr/src/gst-interpipe \
-        && . ~/.local/.venv/bin/activate \
-        && . ./autogen.sh --libdir /usr/lib/x86_64-linux-gnu/gstreamer-1.0/ \
-        && . make \
-        && . make check \
-        && . make install
+        && ./autogen.sh --libdir /usr/lib/x86_64-linux-gnu/gstreamer-1.0/ \
+        && make \
+        && make check \
+        && make install
 
 ENV GST_DEBUG=${GST_DEBUG:-2}
 
