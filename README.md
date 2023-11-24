@@ -1,3 +1,3 @@
-# GStreamer Daemon (gstd) on Docker
+## GStreamer Daemon (gstd) docker image
 
-Run [gstd](https://github.com/RidgeRun/gstd-1.x) and [gst-interpipe plugin](https://github.com/RidgeRun/gst-interpipe) on Docker (and compose)
+Includes [gstd 1.x](https://github.com/RidgeRun/gstd-1.x), [gst-interpipe](https://github.com/RidgeRun/gst-interpipe), gstreamer 1.22, gstreamer good/bad/ugly plugins

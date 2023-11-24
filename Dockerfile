@@ -1,4 +1,5 @@
-FROM debian:11-slim
+FROM debian:12-slim
+
 ARG GSTD_VERSION=0.15.0
 ARG GST_INTERPIPE_VERSION=1.1.8
 
@@ -10,11 +11,12 @@ RUN apt-get update && \
         curl \
         git \
         gstreamer1.0-libav \
-        gstreamer1.0-plugins-bad \
         gstreamer1.0-plugins-base \
         gstreamer1.0-plugins-good \
+        gstreamer1.0-plugins-bad \
         gstreamer1.0-plugins-ugly \
         gstreamer1.0-tools \
+        gstreamer1.0-vaapi \
         gstreamer1.0-x \
         gtk-doc-tools \
         libdaemon-dev \
