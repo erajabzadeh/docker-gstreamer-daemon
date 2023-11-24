@@ -39,7 +39,7 @@ RUN python3 -m venv ~/.local/.venv --system-site-packages
 RUN curl -sSLJ https://github.com/RidgeRun/gstd-1.x/archive/refs/tags/v${GSTD_VERSION}.tar.gz \
         | tar -C /usr/src -xzf - \
         && cd /usr/src/gstd-1.x-${GSTD_VERSION} \
-        && source ~/.local/.venv/activate \
+        && . ~/.local/.venv/activate \
         && ./autogen.sh \
         && ./configure \
         && make \
@@ -47,7 +47,7 @@ RUN curl -sSLJ https://github.com/RidgeRun/gstd-1.x/archive/refs/tags/v${GSTD_VE
 
 RUN git clone --depth 1 --branch v${GST_INTERPIPE_VERSION} https://github.com/RidgeRun/gst-interpipe.git /usr/src/gst-interpipe \
         && cd /usr/src/gst-interpipe \
-        && source ~/.local/.venv/activate \
+        && . ~/.local/.venv/activate \
         && ./autogen.sh --libdir /usr/lib/x86_64-linux-gnu/gstreamer-1.0/ \
         && make \
         && make check \
