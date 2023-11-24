@@ -28,7 +28,7 @@ RUN apt-get update && \
         libjansson-dev \
         libjson-glib-dev \
         libncursesw5-dev \
-        libsoup2.4-dev \
+        libsoup-3.0-dev \
         libtool \
         pkg-config \
         python3-pip \
