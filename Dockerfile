@@ -1,4 +1,4 @@
-FROM debian:12
+FROM debian:11
 
 ARG GSTD_VERSION=0.15.0
 ARG GST_INTERPIPE_VERSION=1.1.8
@@ -28,13 +28,11 @@ RUN apt-get update && \
         libjansson-dev \
         libjson-glib-dev \
         libncursesw5-dev \
-        libsoup-3.0-dev \
+        libsoup2.4-dev \
         libtool \
         pkg-config \
         python3-pip \
         sudo
-
-RUN rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 
 RUN curl -sSLJ https://github.com/RidgeRun/gstd-1.x/archive/refs/tags/v${GSTD_VERSION}.tar.gz \
         | tar -C /usr/src -xzf - \
