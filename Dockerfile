@@ -30,7 +30,7 @@ RUN apt-get update && \
         libgstreamer1.0-dev \
         libjansson-dev \
         libjson-glib-dev \
-        libncursesw5-dev \
+        libncurses-dev \
         libsoup2.4-dev \
         libtool \
         pkg-config \
