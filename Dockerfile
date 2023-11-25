@@ -23,6 +23,7 @@ RUN apt-get update \
                 pkg-config \
                 python3-pip \
                 sudo \
+                usrmerge \
         && apt-get install -t sid --no-install-recommends -y \
                 gstreamer1.0-libav \
                 gstreamer1.0-plugins-base \
