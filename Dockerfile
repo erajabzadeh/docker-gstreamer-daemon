@@ -7,7 +7,7 @@ RUN apt-get update \
         && apt-get -y --no-install-recommends install software-properties-common \
         && add-apt-repository "deb http://httpredir.debian.org/debian sid main" \
         && apt-get update \
-        && apt-get install -t main --no-install-recommends -y \
+        && apt-get install --no-install-recommends -y \
                 automake \
                 build-essential \
                 ca-certificates \
