@@ -4,9 +4,6 @@ ARG GSTD_VERSION=0.15.0
 ARG GST_INTERPIPE_VERSION=1.1.8
 
 RUN apt-get update \
-        && apt-get -y --no-install-recommends install software-properties-common \
-        && add-apt-repository "deb http://httpredir.debian.org/debian sid main" \
-        && apt-get update \
         && apt-get install --no-install-recommends -y \
                 automake \
                 build-essential \
@@ -22,8 +19,11 @@ RUN apt-get update \
                 libtool \
                 pkg-config \
                 python3-pip \
+                software-properties-common \
                 sudo \
                 usrmerge \
+        && add-apt-repository "deb http://httpredir.debian.org/debian sid main" \
+        && apt-get update \
         && apt-get install -t sid --no-install-recommends -y \
                 gstreamer1.0-libav \
                 gstreamer1.0-plugins-base \
