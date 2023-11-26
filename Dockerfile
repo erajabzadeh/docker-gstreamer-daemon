@@ -1,6 +1,6 @@
 FROM debian:12
 
-ARG GSTD_VERSION=0.15.0
+ARG GSTD_VERSION=feature-libsoup3
 ARG GST_INTERPIPE_VERSION=1.1.8
 
 RUN apt-get update && \
