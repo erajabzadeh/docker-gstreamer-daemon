@@ -60,8 +60,8 @@ RUN \
         curl -sSJ https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/gstreamer-1.22.7/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION}.tar.gz  | tar -C /usr/src -xzf - \
         && cd /usr/src/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION} \
         && cargo install cargo-c \
-        && cargo cbuild -p gst-plugin-fallbackswitch --prefix=/usr \
-        && cargo cinstall -p gst-plugin-fallbackswitch --prefix=/usr --libdir /usr/lib/x86_64-linux-gnu/gstreamer-1.0
+        && cargo cbuild --prefix=/usr \
+        && cargo cinstall --prefix=/usr --libdir /usr/lib/x86_64-linux-gnu/gstreamer-1.0
 
 
 FROM debian:bookworm AS runner
