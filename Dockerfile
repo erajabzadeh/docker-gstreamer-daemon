@@ -86,8 +86,22 @@ RUN \
         curl -sSJ "https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/${GST_PLUGINS_RUST_VERSION}/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION}.tar.gz"  | tar -C /usr/src -xzf - \
         && cd /usr/src/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION} \
         && cargo install cargo-c \
-        && cargo cbuild -p gst-plugin-fallbackswitch -p gst-plugin-uriplaylistbin --prefix=/usr \
-        && cargo cinstall -p gst-plugin-fallbackswitch -p gst-plugin-uriplaylistbin --prefix=/usr
+        && cargo cbuild \
+                -p gst-plugin-aws \
+                -p gst-plugin-audiofx \
+                -p gst-plugin-tracers \
+                -p gst-plugin-fallbackswitch \
+                -p gst-plugin-uriplaylistbin \
+                -p gst-plugin-livesync \
+                --prefix=/usr \
+        && cargo cinstall \
+                -p gst-plugin-aws \
+                -p gst-plugin-audiofx \
+                -p gst-plugin-tracers \
+                -p gst-plugin-fallbackswitch \
+                -p gst-plugin-uriplaylistbin \
+                -p gst-plugin-livesync \
+                --prefix=/usr
 
 
 FROM debian:bookworm AS runner
