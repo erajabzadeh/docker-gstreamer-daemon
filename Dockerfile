@@ -4,7 +4,7 @@ FROM rust:1.74-slim-bookworm AS builder
 
 ARG GSTD_VERSION=feature-libsoup3
 ARG GST_PLUGINS_INTERPIPE_VERSION=1.1.8
-ARG GST_PLUGINS_RUST_VERSION=gstreamer-1.22.7
+ARG GST_PLUGINS_RUST_VERSION=0.12.0
 
 RUN \
         apt-get update \
@@ -57,7 +57,7 @@ RUN \
         && make install
 
 RUN \
-        curl -sSJ https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/gstreamer-1.22.7/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION}.tar.gz  | tar -C /usr/src -xzf - \
+        curl -sSJ https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/${GST_PLUGINS_RUST_VERSION}/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION}.tar.gz  | tar -C /usr/src -xzf - \
         && cd /usr/src/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION} \
         && cargo install cargo-c \
         && cargo cbuild --prefix=/usr \
