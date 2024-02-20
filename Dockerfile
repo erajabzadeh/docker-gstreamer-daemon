@@ -63,6 +63,7 @@ RUN \
 FROM rust:1.76-bookworm AS plugins-builder
 
 ARG GST_PLUGINS_RUST_VERSION
+ARG GST_PLUGINS_RUST_PACKAGES=gst-plugin-fallbackswitch,gst-plugin-livesync,gst-plugin-uriplaylistbin,gst-plugins-tracers
 
 RUN \
         apt-get update \
@@ -86,8 +87,8 @@ RUN \
         curl -sSJ "https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/${GST_PLUGINS_RUST_VERSION}/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION}.tar.gz"  | tar -C /usr/src -xzf - \
         && cd /usr/src/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION} \
         && cargo install cargo-c \
-        && cargo cbuild --prefix=/usr \
-        && cargo cinstall --prefix=/usr
+        && cargo cbuild -p "${GST_PLUGINS_RUST_PACKAGES}" --prefix=/usr \
+        && cargo cinstall -p "${GST_PLUGINS_RUST_PACKAGES}" --prefix=/usr
 
 
 FROM debian:bookworm AS runner
