@@ -65,6 +65,24 @@ FROM rust:1.76-bookworm AS plugins-builder
 ARG GST_PLUGINS_RUST_VERSION
 
 RUN \
+        apt-get update \
+        && apt-get install --no-install-recommends -y \
+                build-essential \
+                ca-certificates \
+                curl \
+                gstreamer1.0-plugins-base \
+                gstreamer1.0-plugins-good \
+                gstreamer1.0-plugins-bad \
+                gstreamer1.0-plugins-ugly \
+                gstreamer1.0-x \
+                libglib2.0-dev \
+                libgstreamer-plugins-bad1.0-dev \
+                libgstreamer-plugins-base1.0-dev \
+                libgstreamer1.0-dev \
+                libssl-dev \
+                pkg-config
+
+RUN \
         curl -sSJ "https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/archive/${GST_PLUGINS_RUST_VERSION}/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION}.tar.gz"  | tar -C /usr/src -xzf - \
         && cd /usr/src/gst-plugins-rs-${GST_PLUGINS_RUST_VERSION} \
         && cargo install cargo-c \
