@@ -89,6 +89,7 @@ RUN \
         && cargo cbuild \
                 -p gst-plugin-aws \
                 -p gst-plugin-audiofx \
+                -p gst-plugin-inter \
                 -p gst-plugin-tracers \
                 -p gst-plugin-fallbackswitch \
                 -p gst-plugin-uriplaylistbin \
@@ -97,6 +98,7 @@ RUN \
         && cargo cinstall \
                 -p gst-plugin-aws \
                 -p gst-plugin-audiofx \
+                -p gst-plugin-inter \
                 -p gst-plugin-tracers \
                 -p gst-plugin-fallbackswitch \
                 -p gst-plugin-uriplaylistbin \
