@@ -60,7 +60,7 @@ RUN \
         && make install
 
 
-FROM rust:1.76-bookworm AS plugins-builder
+FROM rust:1.78-bookworm AS plugins-builder
 
 ARG GST_PLUGINS_RUST_VERSION
 
